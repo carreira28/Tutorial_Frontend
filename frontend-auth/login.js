@@ -1,7 +1,7 @@
 const form = document.getElementById('form-login');
 const msgDiv = document.getElementById('mensagem');
 const btnSubmit = document.getElementById('btn-entrar');
-const API = 'http://localhost:3000';
+const API = 'http://localhost:4242';
 function mostrarMensagem(texto, tipo) {
  msgDiv.textContent = texto;
  msgDiv.className = 'mensagem ' + tipo;

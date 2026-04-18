@@ -3,7 +3,7 @@ const form = document.getElementById('form-registo');
 const msgDiv = document.getElementById('mensagem');
 const btnSubmit = document.getElementById('btn-registar');
 // URL base do backend — ajusta se a porta for diferente
-const API = 'http://localhost:3000';
+const API = 'http://localhost:4242';
 // Função auxiliar: mostra uma mensagem de erro ou sucesso
 function mostrarMensagem(texto, tipo) {
  msgDiv.textContent = texto;

@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
+const path = require("path");
 
 if (process.env.NODE_ENV !== "production") {
     require("dotenv").config();
@@ -15,6 +16,9 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(morgan("dev"));
+
+app.use(express.static(path.join(__dirname, '../frontend-auth')));
+app.get('/', (req, res) => res.redirect('/login.html'));
 
 // Rotas
 app.use("/auth", authRoutes);

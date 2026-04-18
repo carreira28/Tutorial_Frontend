@@ -1,4 +1,4 @@
-const API = 'http://localhost:3000';
+const API = 'http://localhost:4242';
 const listaEl = document.getElementById('lista-tasks');
 const msgDiv = document.getElementById('mensagem');
 const nomeEl = document.getElementById('nome-utilizador');
