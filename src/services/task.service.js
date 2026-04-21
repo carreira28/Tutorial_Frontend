@@ -19,16 +19,16 @@ const getTaskById = async (id) => {
     return await prisma.task.findUnique({ where: { id } });
 };
 
-const createTask = async ({ title, description, priority }) => {
+const createTask = async ({ title}) => {
     return await prisma.task.create({
-        data: { title, description, priority },
+        data: { title },
     });
 };
 
-const updateTask = async (id, { title, description, completed, priority }) => {
+const updateTask = async (id, { title}) => {
     return await prisma.task.update({
         where: { id },
-        data: { title, description, completed, priority },
+        data: { title},
     });
 };
 

@@ -37,16 +37,13 @@ const getById = async (req, res, next) => {
 const create = async (req, res, next) => {
     try {
         console.log(req.user);
-        const { title, description, priority } = req.body;
+        const {title} = req.body;
 
-        if (!title || !priority) {
-            return res.status(400).json({ message: "title e priority são obrigatórios" });
-        }
-        if (!validPriorities.includes(priority)) {
-            return res.status(400).json({ message: "priority inválida. Use: low, medium ou high" });
+        if (!title) {
+            return res.status(400).json({ message: "title é obrigatório" });
         }
 
-        const newTask = await taskService.createTask({ title, description, priority });
+        const newTask = await taskService.createTask({title});
         res.status(201).json(newTask);
     } catch (error) {
         next(error);
@@ -56,17 +53,14 @@ const create = async (req, res, next) => {
 const update = async (req, res, next) => {
     try {
         console.log(req.user);
-        const { title, description, completed, priority } = req.body;
+        const { title} = req.body;
 
-        if (!title || !priority) {
+        if (!title) {
             return res.status(400).json({ message: "title e priority são obrigatórios" });
-        }
-        if (!validPriorities.includes(priority)) {
-            return res.status(400).json({ message: "priority inválida. Use: low, medium ou high" });
         }
 
         try {
-            const updatedTask = await taskService.updateTask(req.params.id, { title, description, completed, priority });
+            const updatedTask = await taskService.updateTask(req.params.id, { title});
             res.status(200).json(updatedTask);
         } catch (e) {
             res.status(404).json({ message: "Tarefa não encontrada" });
